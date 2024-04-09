@@ -38,11 +38,12 @@ Describes the main question that you are asking in your project. It should descr
 
 <h2>Paper Review</h2>
 <p>
- This paper introduces FunSearch, an LLM-based approach to tackling challenging mathematical and combinatorial problems. FunSearch iteratively evolves programs via suggestions from the LLM; a distributed system comprised of three types of workers is used to store initial user-provided programs and those generated during the evolutionary process (programs database), query the database for prompts to guide the LLM’s generation of new programs (samplers), and finally assess the generated programs’ performance by executing them on inputs of interest and providing feedback (evaluators). 
+ This paper introduces FunSearch, an LLM-based approach to tackling challenging mathematical and combinatorial problems. FunSearch iteratively evolves programs via suggestions from the LLM; a distributed system comprised of three types of workers is used to store initial user-provided programs and those generated during the evolutionary process (programs database), query the database for prompts to guide the generation of new programs (samplers), and finally assess the generated program performance by executing them on inputs of interest and providing feedback (evaluators). 
 </p>
  <p>
   The algorithm skeleton provided by FunSearch serves as a template for program evolution and is demonstrated in this paper on two different problem domains: cap set construction and online bin packing. Researchers found that in the cap set problem, FunSearch was able to exceed traditional methods by discovering larger cap sets in higher dimensions where brute-force approaches were impractical. Similarly, in the online bin packing problem, FunSearch was able to outperform traditional heuristics by evolving more effective packing strategies. Overall, FunSearch offers scalability, flexibility, and enhanced performance over existing approaches, showcasing its potential to address a wide range of challenging optimization problems. Thus, we hope to extend on this research by applying FunSearch to the online bin packing problem and evaluating the scores. 
  </p>
+ 
 <h2>Method</h2>
 describes the technical structure of your method or implementation. This should be brief, no more than one screenful of webpage text.  You may also include an architectural figure in addition to the text.. Include a pointer to the code to your implementation.
 
