@@ -77,8 +77,8 @@ How do different LLMs(and thus different code mutators) affect the success of Fu
   In order to implement FunSearch, we first connected to OpenAI 3.5 Turbo via their API and registered for a key with $5 worth of credits.  For generating capset solutions,  LLMs are prompted in the form of: 
 
   </p>
-  <center><img src = 'Promp1.png' ></center>
-  <center><img src='Prompt2.png'> </center>
+  <center><img src = 'images/Prompt1.png' ></center>
+  <center><img src='images/Prompt2.png'> </center>
 
 <p>
 The returned code is then run in a Docker sandbox(developed by jonppe on Github) and the performance of the solution evaluated.  This is where we extended the implementation of the original funsearch paper, by examining the # of islands as a hyperparameter upon which we can perform a search. 
