@@ -83,16 +83,31 @@ How do different LLMs(and thus different code mutators) affect the success of Fu
 <p>
 The returned code is then run in a Docker sandbox(developed by jonppe on Github) and the performance of the solution evaluated.  This is where we extended the implementation of the original funsearch paper, by examining the # of islands as a hyperparameter upon which we can perform a search. 
 
+<center><img class = "implement" src = "images/Analyse Implementation.png"> </center>
+
 Here, we injected a file readout from the sandbox run and added the program to the program database. This allows us to further examine the performance and behavior of programs generated with different islands as a hyperparameter.
 
 
 </p>
 
-describes the technical structure of your method or implementation. This should be brief, no more than one screenful of webpage text.  You may also include an architectural figure in addition to the text.. Include a pointer to the code to your implementation.
-
 <h2>Findings</h2>
-reports your experimental findings. This should include graphs or images that visualize the results that you have obtained. Ideally this will compare your method to some simpler approach (this is called a “baseline” comparison), and/or it should compare your method to a simpler version of your method (this is called an “ablation”).
 
+<p>
+  Our findings indicate that the number of islands in the genetic programming algorithm has a significant impact on the evolution and success of its outputs. Specifically, we observed that increasing the number of islands led to a more diverse set of programs being generated, which in turn increased the likelihood of discovering high-performing solutions. This suggests that the algorithm benefits from a higher degree of exploration in the search space, which is facilitated by the parallelism introduced by multiple islands.
+  However, increasing the number of islands also drives up computation costs and # of API calls in total.
+
+  In order to account for this, we limited the number of "samples" (API calls) to under 100.  Thus, 4 experiments were run with this in mind, with the number of islands increasing to a higher multiple of 5 each time.
+
+  <div class="grid-container">
+    <div class="grid-item"><img class='implement' src="images/5 Islands Capset.png"></div>
+    <div class="grid-item"><img class='implement' src="images/Capset 10 Islands.png"></div>
+    <div class="grid-item"><img class='implement' src="images/Capset 1 Island.png"></div>
+    <div class="grid-item"><img class='implement' src="images/15 Islands.png"></div>
+  </div>
+  
+  We found an 10 islands to be optimal, as this creates a larger spread of diversity while providing each island with an adequate number of iterations for advancing evolution of programs.
+  <center><img src="images/Capset max performance.png" class = "implement"></center>
+</p>
 <h2>Conclusion</h2>
 one paragraph to summarize your conclusions, including any implications for applications or impacts on society, or ideas for future work.
 

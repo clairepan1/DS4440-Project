@@ -53,7 +53,16 @@ h2 {
 .implement{
   margin-top: 2rem;
   margin-bottom: 2rem;
-  width: 200px;
+  width: 600px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+.grid-item {
+  text-align: center;
 }
 .citation {
   margin-top: 15px;
