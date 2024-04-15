@@ -72,6 +72,22 @@ How do different LLMs(and thus different code mutators) affect the success of Fu
 
  
 <h2>Method</h2>
+
+<p>
+  In order to implement FunSearch, we first connected to OpenAI 3.5 Turbo via their API and registered for a key with $5 worth of credits.  For generating capset solutions,  LLMs are prompted in the form of: 
+
+  </p>
+  <center><img src = 'Promp1.png' ></center>
+  <center><img src='Prompt2.png'> </center>
+
+<p>
+The returned code is then run in a Docker sandbox(developed by jonppe on Github) and the performance of the solution evaluated.  This is where we extended the implementation of the original funsearch paper, by examining the # of islands as a hyperparameter upon which we can perform a search. 
+
+Here, we injected a file readout from the sandbox run and added the program to the program database. This allows us to further examine the performance and behavior of programs generated with different islands as a hyperparameter.
+
+
+</p>
+
 describes the technical structure of your method or implementation. This should be brief, no more than one screenful of webpage text.  You may also include an architectural figure in addition to the text.. Include a pointer to the code to your implementation.
 
 <h2>Findings</h2>
