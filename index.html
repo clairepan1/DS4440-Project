@@ -24,16 +24,35 @@
 <div class="nd-pageheader">
  <div class="container">
  <h1 class="lead">
- <nobr class="widenobr">FunSearch</nobr>
+ <nobr class="widenobr">Extending Applications of FunSearch: Cap Set and Bin Packing Problems</nobr>
  </h1>
  </div>
 </div><!-- end nd-pageheader -->
 
 <div class="container">
-<div class="col">
+<div class="container">
+<div class="row">
+<div class="col justify-content-center text-center">
+<h2> An Analysis of "Mathematical Discoveries From Program Search With Large Language Models"</h2>
+<p> By: Claire Pan and Kevin Lu 
+<p> Paper Link: <a href = "https://www.nature.com/articles/s41586-023-06924-6">Mathematical Discoveries From Program Search With Large Language Models</a></p>
+<p> Our Implementation Link: <a href = "https://github.com/kevinlu4588/funsearch">GitHub (DS4440 Neural Networks Final Project)</a></p>
+</div>
+</div>
 
 <h2>Introduction</h2>
-Describes the main question that you are asking in your project. It should describe the problem that you are taking on that builds on the paper. For example, you can try seeing if the method in the paper can be applied to some new data, or you can measure or visualize the methods of the paper in your own way that varies from what was done in the paper. Or you investigate whether it is possible to build a new application or new method that incorporates or extends the work in the paper. You should keep it simple: it is just a short project.
+ <p> In this project, we aim to explore the applicability and extend the findings of the paper "FunSearch: Leveraging LLMs for Evolving Programs to Solve Mathematical and Combinatorial Problems." Our objective is to investigate methods to improve the algorithm's effectiveness in tackling the online bin packing problem and the cap set problem, which are both challenges that were originally addressed in the paper but presents opportunities for further optimization and refinement.
+ </p>
+ 
+ <p>
+Building upon the foundation laid out in the paper, our project seeks to evaluate algorithm performance on these two problems and compare it against traditional heuristic methods. We hope to extend the methodology presented in the paper by exploring the impact of various parameters, such as the number of islands and iterations. Specifically, we will measure how altering these parameters affects the size of cap sets discovered. 
+</p>
+<p> 
+To achieve these objectives, we have implemented the FunSearch algorithm, reproduced the experiments outlined in the paper, and extended our investigations by introducing new experiments with varying parameters. We have also developed a pipeline to collect and analyze data, enabling us to generate graphs that depict the relationship between scores and samples across different experimental setups.
+ </p>
+ <p> 
+By addressing these questions, we aim to not only validate the effectiveness of FunSearch in these domains, but also provide insights into the robustness and scalability of its algorithmic framework. Ultimately, our project aims to contribute to the ongoing research in evolutionary algorithms and their applications in solving complex optimization problems.
+ </p>
 
 Main question:
 
@@ -42,10 +61,16 @@ How does changing the number of islands in this genetic programming algorithm af
 How do different LLMs(and thus different code mutators) affect the success of FunSearch outputs?
 
 <h2>Paper Review</h2>
+<p>
+ This paper introduces FunSearch, an LLM-based approach to tackling challenging mathematical and combinatorial problems. FunSearch iteratively evolves programs via suggestions from the LLM; a distributed system comprised of three types of workers is used to store initial user-provided programs and those generated during the evolutionary process (programs database), query the database for prompts to guide the generation of new programs (samplers), and finally assess the generated program performance by executing them on inputs of interest and providing feedback (evaluators). 
+</p>
+  <center><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06924-6/MediaObjects/41586_2023_6924_Fig1_HTML.png?as=webp"style="width:700px; height:350px;"></img><br><br></center>
 
-SDFdoisajdfoaodijf
-summarizes and explains the paper in a paragraph or two, and be sure to include the main takeaways from the paper as you see it. This review should include a couple words that mention how the paper is related to your project.
+ <p>
+  The algorithm skeleton provided by FunSearch serves as a template for program evolution and is demonstrated in this paper on two different problem domains: cap set construction and online bin packing. Researchers found that in the cap set problem, FunSearch was able to exceed traditional methods by discovering larger cap sets in higher dimensions where brute-force approaches were impractical. Similarly, in the online bin packing problem, FunSearch was able to outperform traditional heuristics by evolving more effective packing strategies. Overall, FunSearch offers scalability, flexibility, and enhanced performance over existing approaches, showcasing its potential to address a wide range of challenging optimization problems. Thus, we hope to extend on this research by applying FunSearch to the online bin packing problem and evaluating the scores. 
+ </p>
 
+ 
 <h2>Method</h2>
 describes the technical structure of your method or implementation. This should be brief, no more than one screenful of webpage text.  You may also include an architectural figure in addition to the text.. Include a pointer to the code to your implementation.
 
@@ -56,12 +81,19 @@ reports your experimental findings. This should include graphs or images that vi
 one paragraph to summarize your conclusions, including any implications for applications or impacts on society, or ideas for future work.
 
 <h2>References</h2>
-bibliography at the bottom, where you have cited the main paper that you read, plus any other citations that you’ve taken as inspiration or otherwise mentioned in your project.
+ 
+ <p>[1] Romera-Paredes, B., Barekatain, M., Novikov, A. et al. <a href="https://doi.org/10.1038/s41586-023-06924-6">
+  <em>Mathematical discoveries from program search with large language models. </em> </a>Nature 625, 468 - 475 (2024).
+</p>
 
+  <p>[2] Mouret, J.-B.<a href="https://www.nature.com/articles/d41586-023-03998-0">
+  <em>Large language models help computer programs to evolve.</em> </a>Nature 625, 452 - 453 (2024).
+</p>
+ 
 
 <h2>Team Members</h2>
-                                                   
-<p>Claire Pan, Kevin Lu</p>
+ <p>1. Kevin Lu <a href="lu.kev@northeastern.edu">(lu.kev@northeastern.edu</a>)</p>
+ <p>2. Claire Pan <a href="pan.cl@northeastern.edu">(pan.cl@northeastern.edu</a>)</p>
 
   
 </div><!--row -->
@@ -70,7 +102,7 @@ bibliography at the bottom, where you have cited the main paper that you read, p
 <footer class="nd-pagefooter">
   <div class="row">
     <div class="col-6 col-md text-center">
-      <a href="https://ds4440.baulab.info/">About DS 4440</a>
+      <a href="https://ds4440.baulab.info/">About DS 4440: Practical Deep Networks</a>
     </div>
   </div>
 </footer>
