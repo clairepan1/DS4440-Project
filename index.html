@@ -87,18 +87,39 @@ How do different LLMs(and thus different code mutators) affect the success of Fu
   In order to implement FunSearch, we first connected to OpenAI 3.5 Turbo via their API and registered for a key with $5 worth of credits.  For generating capset solutions,  LLMs are prompted in the form of: 
 
   </p>
-  <center><img class="implement" src = 'images/Prompt1.png' ></center>
-  <center><img class="implement" src='images/Prompt2.png'> </center>
-
+  <div class="grid-container">
+      <div class="grid-item"><img class="implement" src="images/Prompt1.png"></div>
+      <div class="grid-item"><img class="implement" src="images/Palm Response.png"></div>
+      <div class="grid-item"><img class="implement" src="images/Prompt2.png"></div>
+      <div class="grid-item"><img class="implement" src="images/GPT Response.png"></div>
+  </div>
+  
 <p>
+
+This capset specification provides a skeleton of code that the LLM with "evolve" over many iterations.  It defines a baseline greedy algorithm for generating capsets(initially of size 2048 for dimension 11)
 The returned code is then run in a Docker sandbox(developed by jonppe on Github) and the performance of the solution evaluated.  This is where we extended the implementation of the original funsearch paper, by examining the # of islands as a hyperparameter upon which we can perform a search. 
 
 <center><img class = "implement" src = "images/Analyse Implementation.png"> </center>
 
 Here, we injected a file readout from the sandbox run and added the program to the program database. This allows us to further examine the performance and behavior of programs generated with different islands as a hyperparameter.
 
+Further investigation into alternative LLMs:
+
+In addition to Open-AI's GPT-3.5, we also experimented with Google's Palm2 model and are investigating a fine-tuned version of starcoder.
+
+Using the PyPI library ("llm"), we were able to "plug and play" with various models and compare their performance with the FunSearch evolutionary algorithm.
 
 </p>
+<center><img src="images/Different LLM models.png" class="implement"></center>
+<p>
+  In order to fine-tune the starcoder model, we used the <a href="https://huggingface.co/datasets/smangrul/hf-stack-v1?row=3">mangrul/hf-stack-v1</a> dataset available on Hugging Face as well as their open source starcoder model.
+</p>
+<center><img src="images/Dataset.png" class="implement"></center>
+<p>
+  To further reduce the size of the model(we ran out of memory on Google Colab really fast), we utilized the Low Rank Adaptation Technique(LoRA):
+</p>
+<center><img src="images/LoRA.png" class="implement"></center>
+<p> Unfortunately, attempting to train on Colab still didn't work, so our next steps are to utilize the Northeastern RC Cluster(single gpu training) to try and finetune this model.</p>
 
 <h2>Findings</h2>
 
@@ -219,6 +240,11 @@ window.dataLayer = window.dataLayer || [];
     margin-top: 2rem;
     margin-bottom: 2rem;
     width: 600px;
+  }
+  .flex-container {
+  display: grid;
+  flex-wrap: wrap;
+  justify-content: center; /* align items in the center horizontally */
   }
   .grid-container {
     display: grid;
