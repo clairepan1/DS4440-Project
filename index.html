@@ -62,7 +62,7 @@ How do different LLMs(and thus different code mutators) affect the success of Fu
 
 <h2>Paper Review</h2>
 <p>
- This paper introduces FunSearch, an LLM-based approach to tackling challenging mathematical and combinatorial problems. FunSearch iteratively evolves programs via suggestions from the LLM; a distributed system comprised of three types of workers is used to store initial user-provided programs and those generated during the evolutionary process (programs database), query the database for prompts to guide the generation of new programs (samplers), and finally assess the generated program performance by executing them on inputs of interest and providing feedback (evaluators). 
+ This paper introduces FunSearch, an LLM-based approach to tackling challenging mathematical and combinatorial problems. FunSearch iteratively evolves programs via suggestions from the LLM; this LLM is called Codey, and is a pretrained model that is built on top of the PaLM2 model family. Codey is a fast-inference model, meaning that is can quickly process input data and generate predictions (rather than a slower-inference, higher-quality model). Next, a distributed system comprised of three types of workers is used to store initial user-provided programs: the programs database stores and serves programs to FunSearch, the samplers query the database for prompts to guide the generation of new programs, and finally the evaluators assess the generated program performance by executing them on inputs of interest and providing feedback. 
 </p>
   <center><img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-023-06924-6/MediaObjects/41586_2023_6924_Fig1_HTML.png?as=webp"style="width:700px; height:350px;"></img><br><br></center>
 
@@ -71,11 +71,15 @@ How do different LLMs(and thus different code mutators) affect the success of Fu
  </p>
 
   <p>
+In our research, we chose on research FunSearch's abilities in the cap set problem, which is known as one of the best known problems in additive combinatrics. The cap set problem refers to finding the largest posible set of vectors in a finite field such that no three elements in the set can sum up to zero. As this problem has been consistently debated and investigated within mathematics, we thought it would be interesting to push the boundaries of FunSearch in finding the largest possible cap set in `n` dimensions. 
+ </p>
+
+  <p>
    In addition to its approach to tackling mathematical and combinatorial problems, FunSearch incorporates an island mechanism within its evolutionary algorithm framework. This allows for greater efficiency and effectiveness of program evolution by leveraging parallelism and diversity maintenance strategies- by partitioning the population of programs into multiple islands, FunSearch enables simultaneous exploration of different evolutionary paths, similar to conducting several smaller experiments concurrently. Since there is a periodic resetting of low-performing islands, this ensures that better evolutionary trajectories are not prematurely abandoned, which allows for continued exploration and adaptation within each island.
  </p>
 
    <p>
-    It is important to note that wihtin each island, programs are clustered based on their ‘signature’, allowing for targeted sampling and selection procedures that prioritize high-scoring clusters while still preserving diversity within islands. This clustering and selection mechanism helps the FunSearch algorithm navigate the program space more effectively, avoiding stagnation in local minima. This island mechanism enhances the scalability, adaptability, and robustness of FunSearch, thus, we hope to extend on this research by applying FunSearch to the cap set problem and evaluating the scores.
+    It is important to note that within each island, programs are clustered based on their signature, allowing for targeted sampling and selection procedures that prioritize high-scoring clusters while still preserving diversity within islands. A signature refers to the program's performance score on each test case, such as the size of a cap set for each input value. Thus, programs that perform similarly across different inputs are grouped togehter into clusters. This clustering and selection mechanism helps the FunSearch algorithm navigate the program space more effectively, avoiding stagnation in local minima. This island mechanism enhances the scalability, adaptability, and robustness of FunSearch, thus, we hope to extend on this research by applying FunSearch to the cap set problem and evaluating the scores.
  </p>
  <center><img src="images/Island1.png" class="implement"></center>
 
@@ -96,7 +100,7 @@ How do different LLMs(and thus different code mutators) affect the success of Fu
   
 <p>
 
-This capset specification provides a skeleton of code that the LLM with "evolve" over many iterations.  It defines a baseline greedy algorithm for generating capsets(initially of size 2048 for dimension 11)
+This capset specification provides a skeleton of code that the LLM with evolve over many iterations.  It defines a baseline greedy algorithm for generating capsets(initially of size 2048 for dimension 11)
 The returned code is then run in a Docker sandbox(developed by jonppe on Github) and the performance of the solution evaluated.  This is where we extended the implementation of the original funsearch paper, by examining the # of islands as a hyperparameter upon which we can perform a search. 
 
 <center><img class = "implement" src = "images/Analyse Implementation.png"> </center>
