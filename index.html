@@ -24,7 +24,7 @@
 <div class="nd-pageheader">
  <div class="container">
  <h1 class="lead">
- <nobr class="widenobr">Extending Applications of FunSearch: Cap Set and Bin Packing Problems</nobr>
+ <nobr class="widenobr">Extending Applications of FunSearch: Cap Set Problem</nobr>
  </h1>
  </div>
 </div><!-- end nd-pageheader -->
@@ -41,11 +41,11 @@
 </div>
 
 <h2>Introduction</h2>
- <p> In this project, we aim to explore the applicability and extend the findings of the paper "FunSearch: Leveraging LLMs for Evolving Programs to Solve Mathematical and Combinatorial Problems." Our objective is to investigate methods to improve the algorithm's effectiveness in tackling the online bin packing problem and the cap set problem, which are both challenges that were originally addressed in the paper but presents opportunities for further optimization and refinement.
+ <p> In this project, we aim to explore the applicability and extend the findings of the paper "FunSearch: Leveraging LLMs for Evolving Programs to Solve Mathematical and Combinatorial Problems." Our objective is to investigate methods to improve the algorithm's effectiveness in tackling the cap set problem, which is a challenge that were originally addressed in the paper but presents opportunities for further optimization and refinement.
  </p>
  
  <p>
-Building upon the foundation laid out in the paper, our project seeks to evaluate algorithm performance on these two problems and compare it against traditional heuristic methods. We hope to extend the methodology presented in the paper by exploring the impact of various parameters, such as the number of islands and iterations. Specifically, we will measure how altering these parameters affects the size of cap sets discovered. 
+Building upon the foundation laid out in the paper, our project seeks to evaluate algorithm performance on this problem and compare it against traditional heuristic methods. We hope to extend the methodology presented in the paper by exploring the impact of various parameters, such as the number of islands and iterations. Specifically, we will measure how altering these parameters affects the size of cap sets discovered. 
 </p>
 <p> 
 To achieve these objectives, we have implemented the FunSearch algorithm, reproduced the experiments outlined in the paper, and extended our investigations by introducing new experiments with varying parameters. We have also developed a pipeline to collect and analyze data, enabling us to generate graphs that depict the relationship between scores and samples across different experimental setups.
@@ -75,7 +75,7 @@ How do different LLMs(and thus different code mutators) affect the success of Fu
  </p>
 
    <p>
-    It is important to note that wihtin each island, programs are clustered based on their ‘signature’, allowing for targeted sampling and selection procedures that prioritize high-scoring clusters while still preserving diversity within islands. This clustering and selection mechanism helps the FunSearch algorithm navigate the program space more effectively, avoiding stagnation in local minima. This island mechanism enhances the scalability, adaptability, and robustness of FunSearch, thus, we hope to extend on this research by applying FunSearch to the online bin packing problem and evaluating the scores.
+    It is important to note that wihtin each island, programs are clustered based on their ‘signature’, allowing for targeted sampling and selection procedures that prioritize high-scoring clusters while still preserving diversity within islands. This clustering and selection mechanism helps the FunSearch algorithm navigate the program space more effectively, avoiding stagnation in local minima. This island mechanism enhances the scalability, adaptability, and robustness of FunSearch, thus, we hope to extend on this research by applying FunSearch to the cap set problem and evaluating the scores.
  </p>
  <center><img src="images/Island1.png" class="implement"></center>
 
@@ -141,7 +141,7 @@ Using the PyPI library ("llm"), we were able to "plug and play" with various mod
   <center><img src="images/PALM Capset.png"></center>
 </p>
 <h2>Conclusion</h2>
-In conclusion, our study looks into the application of the FunSearch algorithm in tackling the online bin packing problem and the cap set problem, and has provided valuable insights into the dynamics of program evolution. Through different experimentation, we have demonstrated the significant impact of adjusting the number of islands in the genetic programming algorithm, researching the balance between exploration and computational efficiency. Our overall findings suggest that a higher number of islands (optimally 10 islands) creates greater diversity among generated programs, leading to the discovery of more effective solutions. However, this enhancement comes at the cost of increased computational resources. Looking ahead, our research begins to lay some framework for further exploration into refining evolutionary algorithms and their practical applications, and helps future researchers better understand the ways in which the FunSearch algorithm can be better implemented and refined for greater efficiency and accuracy. 
+In conclusion, our study looks into the application of the FunSearch algorithm in tackling the cap set problem, and has provided valuable insights into the dynamics of program evolution. Through different experimentation, we have demonstrated the significant impact of adjusting the number of islands in the genetic programming algorithm, researching the balance between exploration and computational efficiency. Our overall findings suggest that a higher number of islands (optimally 10 islands) creates greater diversity among generated programs, leading to the discovery of more effective solutions. However, this enhancement comes at the cost of increased computational resources. Looking ahead, our research begins to lay some framework for further exploration into refining evolutionary algorithms and their practical applications, and helps future researchers better understand the ways in which the FunSearch algorithm can be better implemented and refined for greater efficiency and accuracy. 
 <h2>References</h2>
  
  <p>[1] Romera-Paredes, B., Barekatain, M., Novikov, A. et al. <a href="https://doi.org/10.1038/s41586-023-06924-6">
