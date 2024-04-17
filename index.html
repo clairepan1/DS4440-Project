@@ -91,11 +91,66 @@ In our research, we chose on research FunSearch's abilities in the cap set probl
   In order to implement FunSearch, we first connected to OpenAI 3.5 Turbo via their API and registered for a key with $5 worth of credits.  For generating capset solutions,  LLMs are prompted in the form of: 
 
   </p>
-  <div class="grid-container">
+
+
+ <div id="container">
+    <a href="#">
+        <figure>
+            <img src=images/Prompt1.png width="100px" height="100px" />
+            <figcaption>First image</figcaption>
+        </figure>
+    </a>
+    <a href="#">
+        <figure>
+             <img src="images/Palm Response.png" width="100px" height="100px" />
+            <figcaption>Second image</figcaption>
+        </figure>
+    </a>
+      <a href="#">
+        <figure>
+             <img src='images/Prompt2.png' width="100px" height="100px" />
+            <figcaption>Second image</figcaption>
+        </figure>
+    </a>
+      <a href="#">
+        <figure>
+             <img src='images/GPT Response.png' width="100px" height="100px" />
+            <figcaption>Second image</figcaption>
+        </figure>
+    </a>
+
+
+  
+</div>
+
+
+ 
+<!--   <div class="grid-container">
+   <figure>
+    <img src='images/Prompt1.png' alt='missing' />
+    <figcaption>Caption goes here</figcaption>
+</figure>
+
+      <figure>
+    <img src='images/Palm Response.png' alt='missing' />
+    <figcaption>Caption goes here</figcaption>
+</figure>
+
+      <figure>
+    <img src='images/Prompt2.png' alt='missing' />
+    <figcaption>Caption goes here</figcaption>
+</figure>
+
+      <figure>
+    <img src='images/GPT Response.png' alt='missing' />
+    <figcaption>Caption goes here</figcaption>
+</figure> -->
+   
+<!-- 
       <div class="grid-item"><img class="implement" src="images/Prompt1.png"></div>
       <div class="grid-item"><img class="implement" src="images/Palm Response.png"></div>
       <div class="grid-item"><img class="implement" src="images/Prompt2.png"></div>
-      <div class="grid-item"><img class="implement" src="images/GPT Response.png"></div>
+      <div class="grid-item"><img class="implement" src="images/GPT Response.png"></div> -->
   </div>
   
 <p>
@@ -277,5 +332,34 @@ window.dataLayer = window.dataLayer || [];
   nobr.widenobr {
     white-space: normal;
   }
+ #container {
+    text-align: center;
+}
+a, figure {
+    display: inline-block;
+}
+figcaption {
+    margin: 10px 0 0 0;
+    font-variant: small-caps;
+    font-family: Arial;
+    font-weight: bold;
+    color: #bb3333;
+}
+figure {
+    padding: 5px;
+}
+img:hover {
+    transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+img {
+    transition: transform 0.2s;
+    -webkit-transition: -webkit-transform 0.2s;
+    -moz-transition: -moz-transform 0.2s;
+    -o-transition: -o-transform 0.2s;
+}
   
 </style>
