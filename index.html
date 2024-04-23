@@ -147,23 +147,34 @@ Using the PyPI library ("llm"), we were able to "plug and play" with various mod
 
 </p>
 <center><img src="images/Different LLM models.png" class="implement"></center>
+<h3>Starcoder</h3>
+We also utilized the publicly available <a href='https://huggingface.co/bigcode/starcoder'> starcoder </a> model on HuggingFace as part of our investigation into how different LLMs would perform on the capset task. Beyond just using the "raw" model, we also investigated if a fine-tuning approach would be change the performance at all(as well as getting an excuse to use the Northeastern HPC cluster).
+<br>
+<br>
+
 <p>
   In order to fine-tune the starcoder model, we used the <a href="https://huggingface.co/datasets/smangrul/hf-stack-v1?row=3">mangrul/hf-stack-v1</a> dataset available on Hugging Face as well as their open source starcoder model.
 </p>
 <center><img src="images/Dataset.png" class="implement"></center>
 <p>
-  To further reduce the size of the model(we ran out of memory on Google Colab really fast), we utilized the Low Rank Adaptation Technique(LoRA):
+  To further reduce the size of the model we utilized the Low Rank Adaptation Technique(LoRA):
 </p>
 <center><img src="images/LoRA.png" class="implement"></center>
-<p> Unfortunately, attempting to train on Colab still didn't work, so our next steps are to utilize the Northeastern RC Cluster(single gpu training) to try and finetune this model.</p>
+<p> And checked-out a P100 single GPU via Open OnDemand to run the fine-tuning Jupyter Notebook.
+
+<h2> Experiment Setup</h2>
+Increasing the number of islands also drives up computation costs and # of API calls in total - each island requires a separate API call to the LLM for each evolution iteration.
+
+In order to account for this, we limited the number of "samples" (API calls) to under 300. We ran a series of experiments on 15 island values(1-15), with each experimental result an average of 3 "runs" of evolution.
+
+In total, we made 45 full "evolutions" of programs: 3 evolutions * 15 islands = 45 total evolutions. The results in the bar graph are the average maximum performance of each # of island configurations.
+
 
 <h2>Findings</h2>
 
 <p>
   Our findings indicate that the number of islands in the genetic programming algorithm has a significant impact on the evolution and success of its outputs. Specifically, we observed that increasing the number of islands led to a more diverse set of programs being generated, which in turn increased the likelihood of discovering high-performing solutions. This suggests that the algorithm benefits from a higher degree of exploration in the search space, which is facilitated by the parallelism introduced by multiple islands.
-  However, increasing the number of islands also drives up computation costs and # of API calls in total.
-
-  In order to account for this, we limited the number of "samples" (API calls) to under 100.  Thus, 4 experiments were run with this in mind, with the number of islands increasing to a higher multiple of 5 each time.
+  Below are some sample "histories" of evolutions for different island values:
 
   <div class="grid-container">
     <div class="grid-item"><img class='implement' src="images/5 Islands Capset.png"></div>
@@ -173,7 +184,10 @@ Using the PyPI library ("llm"), we were able to "plug and play" with various mod
   </div>
   
   We found an 10 islands to be optimal, as this creates a larger spread of diversity while providing each island with an adequate number of iterations for advancing evolution of programs.
-  <center><img src="images/Capset max performance.png" class = "implement"></center>
+  <center><img src="images/Islands graph.png" width="800px"></center>
+  From the bar graph, we can see somewhat of a "bell curve" around 10 islands, with some variation in the curve itself. However, I would expect that if we continued increasing the number of iterations available, the "peak" would continue shifting right.
+  <br><br>
+  <h3> Using other LLMs</h3>
   <center><img src="images/PALM Capset.png"></center>
 </p>
 <h2>Conclusion</h2>
