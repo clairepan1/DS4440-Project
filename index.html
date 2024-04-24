@@ -189,6 +189,7 @@ In total, we made 45 full "evolutions" of programs: 3 evolutions * 15 islands = 
   <br><br>
   <h3> Using other LLMs</h3>
   <center><img src="images/PALM Capset.png"></center>
+  Our initial experiments with the PALM LLM were fairly unsuccessful, which most responses all returning similar code despite prompt engineering and temperature tuning of the model.  Would likely require more advance tuning perhaps? This sample "history" above was present for 1, 5, 10, and 15 island experiments run with 100 iterations.
 
   <div class="grid-container">
     <div class="grid-item"><img class='implement' src="images/Starcoder 1 Island.png"></div>
@@ -196,6 +197,21 @@ In total, we made 45 full "evolutions" of programs: 3 evolutions * 15 islands = 
     <div class="grid-item"><img class='implement' src="images/Fine tuned 1 Island.png"></div>
     <div class="grid-item"><img class='implement' src="images/Fine tuned Starcoder 5 islands.png"></div>
   </div>
+
+  Experiments with the starcoder model showed more interesting results, with the average "variation" in code success being much higher than that of ChatGPT-3.5.  "variation", here, is measured as the deviations in score returned by successive evolution iterations.  Just via the histories themselves, we can see that the Starcoder responses fluctuate wildly, although their peak scores don't come close to that of ChatGPT.
+
+  After fine-tuning the starcoder model, we noticed that the algorithm actually performed slightly worse, showing lower "variation" in successful code(which manifests in the models getting stuck when > 10 islands are present.) 
+
+  While the fine-tuned model had a slightly higher peak performance than the raw model (2950 vs 2917), the variation scores tell the greater story:
+
+  Variation = sqrt(sum(scorei - scorei+1)^2 / n)
+  Raw Starcoder: 2917 peak, 450 variation
+
+  Fine-tuned Starcoder: 2950 peak, 250 variation
+
+  ChatGPT-3.5: 4096 peak, 200 variation
+
+
 </p>
 
 <div class="image-container">
