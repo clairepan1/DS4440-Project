@@ -205,11 +205,13 @@ In total, we made 45 full "evolutions" of programs: 3 evolutions * 15 islands = 
   While the fine-tuned model had a slightly higher peak performance than the raw model (2950 vs 2917), the variation scores tell the greater story:
   <br>
   <br>
-  Variation = sqrt(sum(scorei - scorei+1)^2 / n)
+  Variation = √(<span>&Sigma;</span>(<span>score<sub>i</sub></span> - <span>score<sub>i+1</sub></span>)<sup>2</sup> / <span>n</span>)
+<br>
+<br>
   Raw Starcoder: 2917 peak, 450 variation
-
+<br><br>
   Fine-tuned Starcoder: 2950 peak, 250 variation
-
+<br><br>
   ChatGPT-3.5: 4096 peak, 200 variation
 
 
@@ -264,6 +266,18 @@ window.dataLayer = window.dataLayer || [];
 </html>
 
 <style>
+
+.equation {
+      font-size: 18px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .equation sup {
+      font-size: 12px;
+      vertical-align: top;
+    }
   body, td, th {
     font-family: 'Open Sans', sans-serif;
   }
