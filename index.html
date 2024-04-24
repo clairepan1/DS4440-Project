@@ -197,10 +197,13 @@ In total, we made 45 full "evolutions" of programs: 3 evolutions * 15 islands = 
     <div class="grid-item"><img class='implement' src="images/Fine tuned 1 Island.png"></div>
     <div class="grid-item"><img class='implement' src="images/Fine tuned Starcoder 5 islands.png"></div>
   </div>
-
+  <div class="image-container">
+    <img src="images/Starcoder 15 islands.png" alt="Starcoder 15 islands">
+    <img src="images/Fine tuned Starcoder.png" alt="Fine tuned Starcoder">
+  </div>
   Experiments with the starcoder model showed more interesting results, with the average "variation" in code success being much higher than that of ChatGPT-3.5.  "variation", here, is measured as the deviations in score returned by successive evolution iterations.  Just via the histories themselves, we can see that the Starcoder responses fluctuate wildly, although their peak scores don't come close to that of ChatGPT.
 
-  After fine-tuning the starcoder model, we noticed that the algorithm actually performed slightly worse, showing lower "variation" in successful code(which manifests in the models getting stuck when > 10 islands are present.) 
+  After fine-tuning the starcoder model, we noticed that the algorithm actually performed slightly worse, showing lower "variation" in successful code(which manifests in the models getting stuck at a score of 2048 when > 10 islands are present.) 
 
   While the fine-tuned model had a slightly higher peak performance than the raw model (2950 vs 2917), the variation scores tell the greater story:
   <br>
@@ -212,15 +215,16 @@ In total, we made 45 full "evolutions" of programs: 3 evolutions * 15 islands = 
 <br><br>
   Fine-tuned Starcoder: 2950 peak, 250 variation
 <br><br>
-  ChatGPT-3.5: 4096 peak, 200 variation
+  ChatGPT-3.5: 4096 peak, 400 variation
 
+  <br><br>
+  While variation is not a perfect metric, it does give us a sense of how "stuck" the model is in a local minima.  The fine-tuned model, while having a higher peak score, is much more likely to get stuck in a local minima than the raw model.  This is likely due to the fine-tuning process, which may have overfit the model to the prompt data.
+
+  However, ChatGPT performed significantly better overall, likely due to the true "correctness" of its code. In this game of nature, ChatGPT3.5 shows the greatest success as a evolutionary engine. 
 
 </p>
 
-<div class="image-container">
-  <img src="images/Starcoder 15 islands.png" alt="Starcoder 15 islands">
-  <img src="images/Fine tuned Starcoder.png" alt="Fine tuned Starcoder">
-</div>
+
 <h2>Conclusion</h2>
 In conclusion, our study looks into the application of the FunSearch algorithm in tackling the cap set problem, and has provided valuable insights into the dynamics of program evolution. Through different experimentation, we have demonstrated the significant impact of adjusting the number of islands in the genetic programming algorithm, researching the balance between exploration and computational efficiency. Our overall findings suggest that a higher number of islands (optimally 10 islands) creates greater diversity among generated programs, leading to the discovery of more effective solutions. However, this enhancement comes at the cost of increased computational resources. Looking ahead, our research begins to lay some framework for further exploration into refining evolutionary algorithms and their practical applications, and helps future researchers better understand the ways in which the FunSearch algorithm can be better implemented and refined for greater efficiency and accuracy. 
 <h2>References</h2>
